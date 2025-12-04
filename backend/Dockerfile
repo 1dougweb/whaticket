@@ -1,7 +1,7 @@
 # ============================================
 # Stage 1: Build - Compilar o código TypeScript
 # ============================================
-FROM node:16 AS build-deps
+FROM node:16-bullseye AS build-deps
 
 RUN apt-get update && apt-get install -y wget
 
@@ -23,13 +23,13 @@ RUN npm run build
 # ============================================
 # Stage 2: Runtime - Node.js + Nginx
 # ============================================
-FROM node:16 AS runtime
+FROM node:16-bullseye AS runtime
 
 # Instalar dependências do sistema
 RUN apt-get update \
-    && apt-get install -y wget gnupg nginx supervisor \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+    && apt-get install -y wget gnupg ca-certificates nginx supervisor \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
       --no-install-recommends \
