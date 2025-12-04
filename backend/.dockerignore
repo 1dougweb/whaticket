@@ -1,6 +1,15 @@
-.git
-*Dockerfile*
-*docker-compose*
-node_modules
-dist
-.wwebjs_auth
+# Backend specific ignores
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+*.log
+coverage/
+.nyc_output/
+__tests__/
+*.test.ts
+*.spec.ts
+.DS_Store
+*.swp
+*.swo

@@ -1,5 +1,11 @@
-.git
-*Dockerfile*
-*docker-compose*
-node_modules
-build
+# Frontend specific ignores
+node_modules/
+build/
+.env
+.env.local
+.env.*.local
+*.log
+coverage/
+.DS_Store
+*.swp
+*.swo

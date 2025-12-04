@@ -1,0 +1,78 @@
+# ============================================
+# .dockerignore - Arquivos ignorados no build Docker
+# ============================================
+
+# Node modules (serão instalados no container)
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Environment files (serão copiados separadamente se necessário)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Test files
+**/__tests__/
+**/*.test.*
+**/*.spec.*
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database
+*.sqlite
+*.db
+.docker/data/
+
+# WhatsApp Web.js auth (será montado como volume)
+.wwebjs_auth/
+**/.wwebjs_auth/
+
+# SSL certificates (serão montados como volume)
+ssl/
+
+# Public uploads (serão montados como volume)
+**/public/uploads/
+
