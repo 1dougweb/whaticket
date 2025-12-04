@@ -9,8 +9,6 @@ services:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
-    depends_on:
-      - mysql
     environment:
       - DB_HOST=mysql
       - DB_USER=root
@@ -29,11 +27,8 @@ services:
       - ./backend/.wwebjs_auth/:/usr/src/app/.wwebjs_auth/
     networks:
       - whaticket
-    restart: unless-stopped
 
   frontend:
-    depends_on:
-      - backend
     ports:
       - ${FRONTEND_PORT:-3000}:80
       - ${FRONTEND_SSL_PORT:-3001}:443
@@ -50,7 +45,6 @@ services:
       - ./ssl/www/:/var/www/letsencrypt/
     networks:
       - whaticket
-    restart: unless-stopped
 
   mysql:
     image: ${MYSQL_ENGINE:-mariadb}:${MYSQL_VERSION:-10.6}
