@@ -16,7 +16,7 @@ Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 ```bash
 # MySQL
 MYSQL_ENGINE=mariadb
-MYSQL_VERSION=10.6
+MYSQL_VERSION=11
 MYSQL_ROOT_PASSWORD=strongpassword          # ⚠️ ALTERE ESTA SENHA!
 MYSQL_DATABASE=whaticket
 MYSQL_PORT=3306
